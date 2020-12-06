@@ -78,7 +78,7 @@ module Riiif
         # Get a hash of options for passing to Kernel::open
         # This is the primary pathway for passing basic auth credentials
         def download_opts
-          basic_auth_credentials ? { http_basic_authentication: basic_auth_credentials } : {}
+          basic_auth_credentials ? { http_basic_authentication: basic_auth_credentials, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE } : { ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE }
         end
 
         # Make sure a file path's directories exist.
